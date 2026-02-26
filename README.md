@@ -8,7 +8,11 @@ Inside the container:
   - `POST /predict`
 - A built-in **safe calculator tool** handles math expressions deterministically.
 
-![Alt text](flowchart.pnd)
+
+## Architecture
+
+![Alt text](flowchart.png)
+
 
 ## What you get
 - Vertex Prediction endpoint that accepts requests like:
