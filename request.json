@@ -1,0 +1,17 @@
+{
+  "instances": [
+    { "prompt": "What is RAG in 1 sentence?" },
+    { "prompt": "(12 + 8) * 3" },
+    {
+      "messages": [
+        { "role": "system", "content": "Be very concise." },
+        { "role": "user", "content": "Explain Vertex AI endpoints." }
+      ]
+    }
+  ],
+  "parameters": {
+    "model": "mistral",
+    "temperature": 0.2,
+    "keep_alive": "-1"
+  }
+}
