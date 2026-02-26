@@ -8,6 +8,8 @@ Inside the container:
   - `POST /predict`
 - A built-in **safe calculator tool** handles math expressions deterministically.
 
+![Alt text](flowchart.pnd)
+
 ## What you get
 - Vertex Prediction endpoint that accepts requests like:
   ```json
@@ -18,7 +20,7 @@ Inside the container:
 
 ---
 
-## 0) Prereqs
+## Prereqs
 - Google Cloud project with billing enabled
 - gcloud CLI installed and authenticated:
   ```bash
@@ -33,7 +35,7 @@ gcloud services enable aiplatform.googleapis.com artifactregistry.googleapis.com
 
 ---
 
-## 1) Build & push container image (Artifact Registry)
+## Build & push container image (Artifact Registry)
 
 Set variables:
 ```bash
@@ -58,7 +60,7 @@ gcloud builds submit . --tag "$IMAGE_URI"
 
 ---
 
-## 2) Upload to Vertex Model Registry
+## Upload to Vertex Model Registry
 ```bash
 gcloud ai models upload   --region="$REGION"   --display-name="$IMAGE_NAME"   --container-image-uri="$IMAGE_URI"   --container-ports=8080   --container-health-route="/health"   --container-predict-route="/predict"
 ```
@@ -91,7 +93,7 @@ gcloud ai endpoints deploy-model "$ENDPOINT_ID"   --region="$REGION"   --model="
 
 ---
 
-## 4) Test predictions
+##  Test predictions
 
 Create `request.json`:
 ```json
@@ -121,7 +123,7 @@ gcloud ai endpoints predict "$ENDPOINT_ID" --region="$REGION" --json-request="re
 
 ---
 
-## 5) Optional: Fine-tune Mistral with LoRA and load adapter in Ollama
+##  Optional: Fine-tune Mistral with LoRA and load adapter in Ollama
 
 See: `train/README_TRAINING.md` and `train/dataset_format.md`.
 
